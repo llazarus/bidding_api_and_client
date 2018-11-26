@@ -5,9 +5,10 @@ import NavBar from "./NavBar";
 import AuctionShowPage from "./AuctionShowPage";
 import AuctionIndexPage from "./AuctionIndexPage";
 import WelcomePage from "./WelcomePage";
-import AuctionNewPage from "./AuctionNewPage" 
-import SignInPage from "./SignInPage" 
-import AuthRoute from "./AuthRoute" //
+import AuctionNewPage from "./AuctionNewPage"; 
+import SignInPage from "./SignInPage"; 
+import AuthRoute from "./AuthRoute";
+import SignUpPage from "./SignUpPage";
 // import NotFoundPage from "./NotFoundPage" 
 
 import { User, Session } from "../requests";
@@ -67,6 +68,7 @@ class App extends Component {
             <AuthRoute isAuth={currentUser} path="/auctions/new" exact component={AuctionNewPage} />
             <Route path="/auctions/:id" exact component={AuctionShowPage} />
             <Route path="/auctions" exact component={AuctionIndexPage} />
+            <Route path="/users/new" exact component={SignUpPage} />
           </Switch>
         </div>
       </BrowserRouter>

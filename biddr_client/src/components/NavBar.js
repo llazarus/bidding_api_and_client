@@ -18,14 +18,16 @@ const NavBar = (props) => {
       {currentUser ? (
         <>
         <span>
-          {currentUser.first_name}
+          Hello,{" "}{currentUser.first_name}
         </span>
         <NavLink eact to="/auctions/new">New Auction</NavLink>
         <a href="#" onClick={handleSignOutClick}>Sign Out</a>
         </>
         ) : (
+          <>
           <NavLink exact to="/session/new">Sign In</NavLink>
-          // Add NavLink to Sign Up Here!
+          <NavLink exact to="/users/new">Sign Up</NavLink>
+          </>
         )}
     </nav>
   );

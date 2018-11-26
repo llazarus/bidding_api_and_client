@@ -5,7 +5,7 @@ Rails.application.routes.draw do
         resources :bids, only: [ :create ]
       end
       resource :sessions, only: [ :create, :destroy ]
-      resources :users, only: [] do
+      resources :users, only: [ :create ] do
         # /api/v1/users/current
         get :current, on: :collection
           # /api/v1/users/:question_id/current <-- default
