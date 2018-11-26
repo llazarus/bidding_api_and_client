@@ -1,7 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-
+import NavBar from "./NavBar";
+import AuctionShowPage from "./AuctionShowPage";
+import AuctionIndexPage from "./AuctionIndexPage";
+import WelcomePage from "./WelcomePage";
+import AuctionNewPage from "./AuctionNewPage" 
+import SignInPage from "./SignInPage" 
+import AuthRoute from "./AuthRoute" //
+// import NotFoundPage from "./NotFoundPage" 
 
 import { User, Session } from "../requests";
 
