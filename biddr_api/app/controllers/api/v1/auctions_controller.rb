@@ -10,11 +10,14 @@ class Api::V1::AuctionsController < Api::ApplicationController
 
   def create
     auction = Auction.new auction_params
+    auction.user_id = current_user.id
     auction.save!
     render json: auction
   end
 
   def destroy
+    auction.destroy
+    render json: { status: :success }
   end
 
   private 
