@@ -20,7 +20,7 @@ class AuctionNewPage extends Component {
         if (auction.errors) {
           this.setState({ errors: auction.errors });
         } else {
-          this.props.push(`/auctions/${auction.id}`);
+          this.props.history.push(`/auctions/${auction.id}`);
         }
       });
   }

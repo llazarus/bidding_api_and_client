@@ -27,10 +27,14 @@ class AuctionShowPage extends Component {
   }
 
   // FIX THIS TO ACTUALLY DELETE FROM DATABASE!
-  deleteAuction() {
-    this.setState({
-      auction: null
-    });
+  deleteAuction(event) {
+    event.preventDefault();
+    const { match: { params } } = this.props
+    Auction
+      .destroy(params.id)
+      .then(() => {
+        this.props.history.push("/auctions")
+      })
   }
 
   render() {

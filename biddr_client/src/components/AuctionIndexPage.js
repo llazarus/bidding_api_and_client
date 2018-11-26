@@ -11,8 +11,6 @@ class AuctionIndexPage extends Component {
       loading: true,
       auctions: []
     };
-
-    this.deleteAuction = this.deleteAuction.bind(this);
   }
 
   componentDidMount() {
@@ -21,13 +19,6 @@ class AuctionIndexPage extends Component {
         auctions: auctions,
         loading: false
       });
-    });
-  }
-
-  // FIX THIS TO ACTUALLY DELETE AND NOT JUST FILTER!!!!
-  deleteAuction(auctionId) {
-    this.setState({
-      auctions: this.state.auctions.filter(a => a.id !== auctionId)
     });
   }
 
@@ -52,8 +43,6 @@ class AuctionIndexPage extends Component {
             <li key={auction.id} style={{marginBottom: "15px"}}>
               <Link to={`/auctions/${auction.id}`}>{auction.title}</Link>
               <br/>
-              {/* FIX DELETE TO ACTUALLY WORK! */}
-              <button onClick={() => this.deleteAuction(auction.id)}>Delete</button>
             </li>
           ))}
         </ul>
