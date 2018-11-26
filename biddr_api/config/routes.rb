@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     end
     # match "*not_found", via: :all, to: "application#not_found"
   end
+
+  resources :users, only: [ :new, :create ]
 end
