@@ -16,7 +16,7 @@ class AuctionIndexPage extends Component {
   }
 
   componentDidMount() {
-    Auction.all().then(auction => {
+    Auction.all().then(auctions => {
       this.setState({
         auctions: auctions,
         loading: false
