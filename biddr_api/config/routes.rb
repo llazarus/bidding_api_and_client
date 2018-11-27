@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :auctions, only: [ :index, :show, :create, :destroy ] do
-        resources :bids, only: [ :destroy ]
+        resources :bids, only: [ :create ]
       end
       resource :sessions, only: [ :create, :destroy ]
-      resources :users, only: [] do
+      resources :users, only: [ :create ] do
         # /api/v1/users/current
         get :current, on: :collection
           # /api/v1/users/:question_id/current <-- default
@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     end
     # match "*not_found", via: :all, to: "application#not_found"
   end
+
+  resources :users, only: [ :new, :create ]
 end
