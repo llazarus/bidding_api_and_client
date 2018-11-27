@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 import AuctionDetails from "./AuctionDetails";
 import BidList from "./BidList";
-import { Auction } from "../requests";
+import BidForm from "./BidForm";
+import { Auction, Bid } from "../requests";
 
 class AuctionShowPage extends Component {
   constructor(props) {
@@ -14,6 +15,19 @@ class AuctionShowPage extends Component {
     };
 
     this.deleteAuction = this.deleteAuction.bind(this);
+    this.createBid = this.createBid.bind(this);
+  }
+
+  createBid(params) {
+    const id = this.props.match.params.id;
+    Bid.create(params, id)
+      .then(bid => {
+        if (bid.errors) {
+          this.render();
+        } else {
+          window.location.reload();
+        }
+      });
   }
 
   componentDidMount() {
@@ -26,7 +40,6 @@ class AuctionShowPage extends Component {
     });
   }
 
-  // FIX THIS TO ACTUALLY DELETE FROM DATABASE!
   deleteAuction(event) {
     event.preventDefault();
     const { match: { params } } = this.props
@@ -38,6 +51,7 @@ class AuctionShowPage extends Component {
   }
 
   render() {
+    const id = this.props.match.params.id;
     if (this.state.loading) {
       return (
         <main className="AuctionShowPage">
@@ -57,8 +71,11 @@ class AuctionShowPage extends Component {
     return (
       <main className="AuctionShowPage">
         <AuctionDetails {...this.state.auction} />
-        {/* Fix this to actually work! */}
         <button onClick={this.deleteAuction}>Delete</button>
+        <hr/>
+        <h3>Place a Bid</h3>
+        <BidForm errors={this.state.errors} onSubmit={this.createBid} />
+        <hr/>
         <h3>Previous Bids</h3>
         <BidList bids={this.state.auction.bids} />
       </main>
